@@ -12,8 +12,8 @@
     :root {
       --cream:    #fdf8f0;
       --white:    #fffcf7;
-      --navy:     #1e2540;
-      --navy-mid: #253058;
+      --navy:     #3d2010;
+      --navy-mid: #4e2e16;
       --charcoal: #3a3028;
       --gold:     #c9a84c;
       --gold-lt:  #e2c97e;
@@ -214,15 +214,14 @@
     .hs-4 { animation: hsFloat 13s ease-in-out 3.0s infinite; }
     .hs-5 { animation: hsFloat 10s ease-in-out 3.1s infinite; }
 
-    /* Simulated city night sky — layered atmospheric glow */
+    /* Flat warm brown background */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 160% 65% at 50% 100%, rgba(210,155,50,.36) 0%, rgba(160,108,30,.14) 42%, transparent 64%),
-        radial-gradient(ellipse 80% 40% at 25% 92%, rgba(215,165,60,.15) 0%, transparent 52%),
-        radial-gradient(ellipse 65% 35% at 75% 88%, rgba(201,168,76,.13) 0%, transparent 48%),
-        radial-gradient(ellipse 45% 22% at 50% 78%, rgba(240,190,80,.07) 0%, transparent 42%),
-        linear-gradient(to bottom, #090e1a 0%, #0c1424 42%, #10192f 72%, #090d1a 100%);
+        radial-gradient(ellipse 160% 65% at 50% 100%, rgba(210,155,50,.28) 0%, rgba(140,80,20,.12) 42%, transparent 64%),
+        radial-gradient(ellipse 80% 40% at 25% 92%, rgba(200,140,50,.12) 0%, transparent 52%),
+        radial-gradient(ellipse 65% 35% at 75% 88%, rgba(180,110,40,.10) 0%, transparent 48%),
+        linear-gradient(to bottom, #3d2010 0%, #4e2e16 42%, #3a1e0c 72%, #2e1608 100%);
     }
 
     /* Houston skyline silhouette SVG — positioned at bottom */
@@ -1011,6 +1010,7 @@
 
   <!-- layered atmospheric background -->
   <div class="hero-bg"></div>
+
 
   <!-- Floating geometric shapes -->
   <div class="hero-shapes">
