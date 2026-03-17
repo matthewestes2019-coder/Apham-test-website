@@ -169,12 +169,12 @@
       height: 100vh; min-height: 620px;
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
-      background: #070d1a;
+      background: #0a0503;
     }
 
     /* ─── FLOATING SHAPES ─── */
     .hero-shapes {
-      position: absolute; inset: 0; z-index: 1;
+      position: absolute; inset: 0; z-index: 2;
       overflow: hidden; pointer-events: none;
     }
     .hs-wrap {
@@ -214,14 +214,29 @@
     .hs-4 { animation: hsFloat 13s ease-in-out 3.0s infinite; }
     .hs-5 { animation: hsFloat 10s ease-in-out 3.1s infinite; }
 
-    /* Flat warm brown background */
+    /* Video background */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 160% 65% at 50% 100%, rgba(210,155,50,.28) 0%, rgba(140,80,20,.12) 42%, transparent 64%),
-        radial-gradient(ellipse 80% 40% at 25% 92%, rgba(200,140,50,.12) 0%, transparent 52%),
-        radial-gradient(ellipse 65% 35% at 75% 88%, rgba(180,110,40,.10) 0%, transparent 48%),
-        linear-gradient(to bottom, #3d2010 0%, #4e2e16 42%, #3a1e0c 72%, #2e1608 100%);
+      overflow: hidden;
+      background: #0a0503;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(30,15,5,.55) 0%,
+        rgba(20,10,3,.30) 40%,
+        rgba(20,10,3,.35) 65%,
+        rgba(10,5,2,.78) 100%
+      );
     }
 
     /* Houston skyline silhouette SVG — positioned at bottom */
@@ -1008,57 +1023,15 @@
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="home">
 
-  <!-- layered atmospheric background -->
-  <div class="hero-bg"></div>
-
-
-  <!-- Floating geometric shapes -->
-  <div class="hero-shapes">
-
-    <!-- Shape 1: large, upper-left, gold tint, 12° -->
-    <div class="hs-wrap" style="left:-5%;top:20%;--rot:12deg;">
-      <div class="hs hs-1" style="width:600px;height:140px;background:linear-gradient(to right,rgba(201,168,76,.14),transparent);"></div>
-    </div>
-
-    <!-- Shape 2: large, lower-right, warm amber, -15° -->
-    <div class="hs-wrap" style="right:-2%;top:68%;--rot:-15deg;">
-      <div class="hs hs-2" style="width:500px;height:120px;background:linear-gradient(to right,rgba(210,155,50,.12),transparent);"></div>
-    </div>
-
-    <!-- Shape 3: medium, lower-left, deep gold, -8° -->
-    <div class="hs-wrap" style="left:8%;bottom:8%;--rot:-8deg;">
-      <div class="hs hs-3" style="width:300px;height:80px;background:linear-gradient(to right,rgba(160,122,42,.13),transparent);"></div>
-    </div>
-
-    <!-- Shape 4: small, upper-right, pale amber, 20° -->
-    <div class="hs-wrap" style="right:18%;top:12%;--rot:20deg;">
-      <div class="hs hs-4" style="width:200px;height:60px;background:linear-gradient(to right,rgba(226,185,90,.12),transparent);"></div>
-    </div>
-
-    <!-- Shape 5: tiny, upper-center-left, soft gold, -25° -->
-    <div class="hs-wrap" style="left:22%;top:6%;--rot:-25deg;">
-      <div class="hs hs-5" style="width:150px;height:40px;background:linear-gradient(to right,rgba(240,200,100,.09),transparent);"></div>
-    </div>
-
+  <!-- Video background -->
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="Project_references/houston-timelapse.mp4" type="video/mp4">
+    </video>
   </div>
 
-  <!-- Houston skyline silhouette -->
-  <div class="hero-skyline">
-    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
-      <path fill="#070d1a" d="
-        M0,320 L0,240
-        L30,240 L30,210 L38,210 L38,195 L46,195 L46,210 L54,210 L54,180 L60,180 L60,160 L66,160 L66,145 L72,145 L72,160 L78,160 L78,180 L90,180 L90,200 L100,200 L100,170 L108,170 L108,140 L116,140 L116,120 L124,120 L124,100 L130,100 L130,90 L136,90 L136,100 L142,100 L142,120 L148,120 L148,140 L156,140 L156,165 L164,165 L164,185 L172,185 L172,165 L178,165 L178,145 L188,145 L188,125 L196,125 L196,105 L202,105 L202,95 L210,95 L210,80 L216,80 L216,70 L224,70 L224,60 L230,60 L230,55 L236,55 L236,60 L242,60 L242,70 L250,70 L250,80 L256,80 L256,95 L264,95 L264,110 L270,110 L270,130 L278,130 L278,150 L286,150 L286,170 L292,170 L292,185 L300,185
-        L300,160 L308,160 L308,135 L316,135 L316,115 L322,115 L322,100 L328,100 L328,85 L336,85 L336,68 L344,68 L344,52 L350,52 L350,44 L356,44 L356,38 L362,38 L362,44 L368,44 L368,52 L376,52 L376,68 L382,68 L382,82 L390,82 L390,100 L396,100 L396,118 L404,118 L404,136 L412,136 L412,155 L420,155 L420,175 L428,175
-        L428,150 L436,150 L436,128 L444,128 L444,108 L452,108 L452,92 L460,92 L460,72 L468,72 L468,56 L476,56 L476,42 L484,42 L484,32 L490,32 L490,24 L496,24 L496,18 L504,18 L504,14 L510,14 L510,10 L516,10 L516,14 L522,14 L522,18 L530,18 L530,24 L536,24 L536,32 L542,32 L542,42 L550,42 L550,56 L558,56 L558,72 L566,72 L566,92 L574,92 L574,112 L580,112 L580,132 L588,132 L588,152 L596,152
-        L596,130 L604,130 L604,108 L612,108 L612,90 L620,90 L620,72 L628,72 L628,55 L636,55 L636,40 L644,40 L644,28 L652,28 L652,18 L660,18 L660,10 L668,10 L668,5 L676,5 L676,10 L684,10 L684,18 L692,18 L692,28 L700,28 L700,42 L708,42 L708,58 L716,58 L716,76 L722,76 L722,95 L730,95 L730,115 L738,115 L738,138 L744,138
-        L744,115 L752,115 L752,95 L760,95 L760,78 L768,78 L768,62 L776,62 L776,48 L784,48 L784,35 L792,35 L792,24 L800,24 L800,15 L808,15 L808,8 L816,8 L816,4 L822,4 L822,8 L830,8 L830,15 L838,15 L838,25 L846,25 L846,38 L854,38 L854,52 L862,52 L862,68 L868,68 L868,85 L876,85 L876,105 L882,105 L882,125 L890,125 L890,148 L898,148
-        L898,125 L906,125 L906,105 L914,105 L914,88 L922,88 L922,72 L928,72 L928,58 L936,58 L936,46 L944,46 L944,36 L950,36 L950,28 L958,28 L958,22 L966,22 L966,28 L972,28 L972,36 L980,36 L980,48 L988,48 L988,62 L996,62 L996,78 L1004,78 L1004,96 L1010,96 L1010,115 L1018,115 L1018,136 L1026,136 L1026,158 L1034,158
-        L1034,136 L1042,136 L1042,116 L1048,116 L1048,98 L1056,98 L1056,82 L1064,82 L1064,68 L1072,68 L1072,56 L1078,56 L1078,46 L1086,46 L1086,60 L1094,60 L1094,80 L1100,80 L1100,100 L1108,100 L1108,118 L1116,118 L1116,138 L1122,138 L1122,158 L1130,158 L1130,178 L1138,178
-        L1138,155 L1146,155 L1146,135 L1152,135 L1152,118 L1160,118 L1160,100 L1168,100 L1168,85 L1176,85 L1176,72 L1184,72 L1184,62 L1190,62 L1190,72 L1198,72 L1198,85 L1206,85 L1206,100 L1212,100 L1212,118 L1220,118 L1220,136 L1228,136 L1228,155 L1236,155 L1236,175 L1244,175 L1244,195 L1250,195
-        L1250,175 L1258,175 L1258,158 L1266,158 L1266,142 L1272,142 L1272,128 L1280,128 L1280,142 L1288,142 L1288,160 L1296,160 L1296,178 L1304,178 L1304,196 L1312,196 L1312,212 L1320,212 L1320,228 L1328,228 L1328,240 L1360,240 L1360,230 L1380,230 L1380,240 L1440,240 L1440,320 Z
-      "/>
-    </svg>
-  </div>
+
+
 
   <div class="hero-grain"></div>
 
