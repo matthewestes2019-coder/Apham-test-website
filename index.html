@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanda Pham Real Estate — Houston, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --cream:    #fdf8f0;
+      --white:    #fffcf7;
+      --navy:     #1e2540;
+      --navy-mid: #253058;
+      --charcoal: #3a3028;
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c97e;
+      --gold-dk:  #a07a2a;
+      --warm-50:  #fdf8f0;
+      --warm-100: #f5ede0;
+      --warm-200: #e8d8c4;
+      --text-body:#4a3f35;
+      --text-muted:#8a7a6a;
+      --radius-sm: 6px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --shadow-card: 0 4px 6px -1px rgba(160,122,42,.07), 0 12px 32px -4px rgba(160,122,42,.11);
+      --shadow-hover: 0 8px 16px -2px rgba(160,122,42,.12), 0 24px 48px -8px rgba(160,122,42,.18);
+      --shadow-gold: 0 4px 24px rgba(201,168,76,.32);
+      --transition-base: cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ─── */
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    h1,h2,h3,h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.2; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 76px;
+      background: transparent;
+      transition: background .4s var(--transition-base), box-shadow .4s var(--transition-base);
+    }
+    .nav.scrolled {
+      background: rgba(249,247,243,.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(26,37,64,.08);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      transition: color .4s;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav.scrolled .nav-logo { color: var(--navy); }
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.75);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color .25s;
+    }
+    .nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0; height: 1px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s var(--transition-base);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav.scrolled .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: transparent !important;
+      color: rgba(255,255,255,.75) !important;
+      border: 1px solid rgba(255,255,255,.4) !important;
+      padding: 8px 20px !important;
+      border-radius: 2px !important;
+      font-size: .72rem !important;
+      letter-spacing: .12em !important;
+      text-transform: uppercase !important;
+      transition: border-color .25s, color .25s, background .25s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      border-color: var(--gold) !important;
+      color: var(--gold-lt) !important;
+      background: rgba(201,168,76,.08) !important;
+    }
+    .nav.scrolled .nav-cta {
+      color: var(--navy) !important;
+      border-color: var(--navy) !important;
+    }
+    .nav.scrolled .nav-cta:hover {
+      background: var(--navy) !important;
+      color: var(--white) !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column; gap: 6px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 1.5px;
+      background: var(--white);
+      transition: transform .3s, opacity .3s, background .4s;
+    }
+    .nav.scrolled .hamburger span { background: var(--navy); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 76px; left: 0; right: 0;
+      background: rgba(7,13,26,.97);
+      backdrop-filter: blur(20px);
+      padding: 24px 5% 36px;
+      flex-direction: column; gap: 0;
+      z-index: 99;
+      border-bottom: 1px solid rgba(201,168,76,.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: .8rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      transition: color .2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-lt); }
+
+    /* ─── HERO ─── */
+    .hero {
+      height: 100vh; min-height: 620px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: #070d1a;
+    }
+
+    /* ─── FLOATING SHAPES ─── */
+    .hero-shapes {
+      position: absolute; inset: 0; z-index: 1;
+      overflow: hidden; pointer-events: none;
+    }
+    .hs-wrap {
+      position: absolute;
+    }
+    .hs {
+      border-radius: 9999px;
+      border: 1.5px solid rgba(255,255,255,.11);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(255,255,255,.05);
+      position: relative;
+    }
+    .hs::after {
+      content: '';
+      position: absolute; inset: 0; border-radius: 9999px;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.18), transparent 70%);
+    }
+
+    /* Per-shape: entrance on wrapper (opacity + slide + rotate), float on inner pill */
+    @keyframes hsWrapIn {
+      from { opacity: 0; transform: rotate(calc(var(--rot, 0deg) - 15deg)) translateY(-150px); }
+      to   { opacity: 1; transform: rotate(var(--rot, 0deg)) translateY(0); }
+    }
+    @keyframes hsFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(15px); } }
+
+    /* Wrapper entrance — uses --rot CSS var set inline */
+    .hero-shapes > .hs-wrap:nth-child(1) { animation: hsWrapIn 2.4s 0.3s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+    .hero-shapes > .hs-wrap:nth-child(2) { animation: hsWrapIn 2.4s 0.5s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+    .hero-shapes > .hs-wrap:nth-child(3) { animation: hsWrapIn 2.4s 0.4s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+    .hero-shapes > .hs-wrap:nth-child(4) { animation: hsWrapIn 2.4s 0.6s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+    .hero-shapes > .hs-wrap:nth-child(5) { animation: hsWrapIn 2.4s 0.7s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+
+    /* Inner pill: continuous float only */
+    .hs-1 { animation: hsFloat 12s ease-in-out 2.7s infinite; }
+    .hs-2 { animation: hsFloat 14s ease-in-out 2.9s infinite; }
+    .hs-3 { animation: hsFloat 11s ease-in-out 2.8s infinite; }
+    .hs-4 { animation: hsFloat 13s ease-in-out 3.0s infinite; }
+    .hs-5 { animation: hsFloat 10s ease-in-out 3.1s infinite; }
+
+    /* Simulated city night sky — layered atmospheric glow */
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 160% 65% at 50% 100%, rgba(210,155,50,.36) 0%, rgba(160,108,30,.14) 42%, transparent 64%),
+        radial-gradient(ellipse 80% 40% at 25% 92%, rgba(215,165,60,.15) 0%, transparent 52%),
+        radial-gradient(ellipse 65% 35% at 75% 88%, rgba(201,168,76,.13) 0%, transparent 48%),
+        radial-gradient(ellipse 45% 22% at 50% 78%, rgba(240,190,80,.07) 0%, transparent 42%),
+        linear-gradient(to bottom, #090e1a 0%, #0c1424 42%, #10192f 72%, #090d1a 100%);
+    }
+
+    /* Houston skyline silhouette SVG — positioned at bottom */
+    .hero-skyline {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      z-index: 1; line-height: 0;
+      opacity: .55;
+    }
+    .hero-skyline svg { width: 100%; height: auto; display: block; }
+
+    /* Subtle noise grain */
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      opacity: .055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Gold hairline at bottom + warm horizon glow */
+    .hero-decor {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
+    }
+    .hero-decor::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,.7) 30%, rgba(235,210,130,1) 50%, rgba(201,168,76,.7) 70%, transparent);
+    }
+    .hero-decor::after {
+      content: '';
+      position: absolute; bottom: 0; left: 10%; right: 10%; height: 60px;
+      background: radial-gradient(ellipse 80% 100% at 50% 100%, rgba(201,168,76,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 4;
+      text-align: center;
+      padding: 0 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+
+    /* Large monogram — mirrors the "§" mark in the reference */
+    .hero-welcome {
+      font-size: clamp(.6rem, 1vw, .75rem);
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 24px;
+      opacity: .85;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-welcome::before,
+    .hero-welcome::after {
+      content: '';
+      display: block; width: 28px; height: 1px;
+      background: var(--gold-lt);
+      opacity: .5;
+    }
+
+    .hero-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(6rem, 16vw, 13rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 28px;
+      opacity: .94;
+      text-shadow: 0 0 100px rgba(210,155,50,.28), 0 0 40px rgba(201,168,76,.15);
+    }
+
+    .hero-tagline {
+      font-size: clamp(.65rem, 1.2vw, .82rem);
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 40px;
+      white-space: nowrap;
+    }
+
+    .hero-actions {
+      display: flex; gap: 0; flex-wrap: wrap; justify-content: center;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--white);
+      padding: 16px 44px;
+      border: 1px solid rgba(255,255,255,.45);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color .3s, color .3s, background .3s;
+      white-space: nowrap;
+    }
+    .hero-btn:first-child { border-right: none; }
+    .hero-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-lt);
+      background: rgba(201,168,76,.07);
+    }
+    .hero-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .hero-btn:active { opacity: .8; }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 4;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: .4;
+      animation: scrollBob 2s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--white); font-weight: 500;
+    }
+    .hero-scroll svg { width: 16px; height: 16px; color: var(--white); }
+    @keyframes scrollBob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Reusable section buttons (outside hero) */
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 14px 32px; border-radius: 2px;
+      border: 1.5px solid var(--gold);
+      cursor: pointer; display: inline-block;
+      transition: background .25s, transform .2s var(--transition-base), box-shadow .25s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt); border-color: var(--gold-lt);
+      transform: translateY(-2px); box-shadow: var(--shadow-gold);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      background: transparent; color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 14px 32px; border-radius: 2px;
+      border: 1.5px solid var(--navy);
+      cursor: pointer; display: inline-block;
+      transition: border-color .25s, color .25s, background .25s, transform .2s var(--transition-base);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold-dk); color: var(--gold-dk);
+      transform: translateY(-2px);
+    }
+    .btn-outline:active { transform: translateY(0); }
+
+    /* ─── SECTION BASICS ─── */
+    section { padding: 96px 5%; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .73rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold-dk);
+      margin-bottom: 14px;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 24px; height: 1.5px; background: var(--gold);
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--gold-dk); }
+
+    /* ─── ABOUT ─── */
+    .about { background: linear-gradient(160deg, var(--white) 0%, #fdf6ec 100%); }
+    .about-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--warm-100);
+      position: relative;
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,37,64,.25) 0%, transparent 60%);
+      border-radius: var(--radius-lg);
+    }
+    /* decorative frame */
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: 20px; left: -16px; right: 16px; bottom: -16px;
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+      opacity: .4;
+    }
+    .about-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      padding: 18px 26px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      z-index: 2;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .about-badge small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      font-weight: 500;
+    }
+    .about-content {}
+    .about-content .section-title { margin-bottom: 24px; }
+    .about-content p {
+      color: var(--text-body); font-size: 1rem;
+      margin-bottom: 18px; font-weight: 300;
+    }
+    .about-stats {
+      display: flex; gap: 32px;
+      margin-top: 40px; padding-top: 40px;
+      border-top: 1px solid var(--warm-200);
+    }
+    .stat { flex: 1; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 600;
+      color: var(--navy); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num span { color: var(--gold-dk); }
+    .stat-label {
+      font-size: .8rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ─── LISTINGS ─── */
+    .listings { background: var(--warm-50); }
+    .listings-header {
+      max-width: 1120px; margin: 0 auto 56px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .listings-header-left {}
+    .listings-link {
+      font-size: .85rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gold-dk);
+      display: flex; align-items: center; gap: 6px;
+      transition: gap .25s;
+    }
+    .listings-link:hover { gap: 10px; }
+    .listings-link svg { width: 14px; height: 14px; }
+    .listings-grid {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform .35s var(--transition-base), box-shadow .35s var(--transition-base);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .card-img {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+      background: var(--warm-100);
+    }
+    .card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s var(--transition-base);
+    }
+    .card:hover .card-img img { transform: scale(1.04); }
+    .card-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,37,64,.55) 0%, transparent 55%);
+      display: flex; align-items: flex-end; justify-content: flex-end;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .card:hover .card-img-overlay { opacity: 1; }
+    .card-view-btn {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      border: none; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .card-view-btn:hover { background: var(--gold-lt); transform: scale(1.03); }
+    .card-status {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+    }
+    .card-body { padding: 22px 24px 24px; }
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
+    .card-addr {
+      font-size: .88rem; color: var(--text-muted);
+      margin-bottom: 16px; font-weight: 400;
+    }
+    .card-badges {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .badge {
+      display: flex; align-items: center; gap: 5px;
+      background: var(--warm-50);
+      border: 1px solid var(--warm-200);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: .78rem; color: var(--charcoal); font-weight: 500;
+    }
+    .badge svg { width: 12px; height: 12px; color: var(--gold-dk); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      background: #191e32;
+      position: relative; overflow: hidden;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 70% at 90% 15%, rgba(201,168,76,.11) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 10% 85%, rgba(180,130,40,.08) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,168,76,.05) 0%, transparent 50%);
+    }
+    .testimonials-inner {
+      max-width: 1120px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .testimonials-header { margin-bottom: 56px; }
+    .testimonials-header .section-tag { color: var(--gold-lt); }
+    .testimonials-header .section-tag::before { background: var(--gold-lt); }
+    .testimonials-header .section-title { color: var(--white); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .tcard {
+      background: rgba(255,248,235,.04);
+      border: 1px solid rgba(201,168,76,.22);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 20px;
+      transition: background .3s, border-color .3s, transform .3s var(--transition-base);
+    }
+    .tcard:hover {
+      background: rgba(255,248,235,.08);
+      border-color: rgba(201,168,76,.42);
+      transform: translateY(-4px);
+    }
+    .tcard-stars {
+      display: flex; gap: 4px;
+    }
+    .star { color: var(--gold); font-size: 1rem; }
+    .tcard-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .tcard-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .tcard-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dk), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--white);
+      flex-shrink: 0;
+    }
+    .tcard-name {
+      font-size: .88rem; font-weight: 600;
+      color: var(--white); margin-bottom: 2px;
+    }
+    .tcard-loc {
+      font-size: .78rem; color: var(--gold-lt); font-weight: 400;
+    }
+    /* decorative open-quote */
+    .tcard-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem; line-height: 1;
+      color: rgba(201,168,76,.2);
+      margin-bottom: -20px;
+      margin-top: -8px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact { background: linear-gradient(170deg, #fdf6ec 0%, var(--white) 60%); }
+    .contact-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
+    }
+    .contact-info {}
+    .contact-info .section-title { margin-bottom: 18px; }
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic;
+      color: var(--text-muted); margin-bottom: 44px;
+      line-height: 1.7;
+    }
+    .contact-list { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--warm-100);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .25s;
+    }
+    .contact-item:hover .contact-icon { background: var(--gold); }
+    .contact-icon svg { width: 18px; height: 18px; color: var(--gold-dk); }
+    .contact-item:hover .contact-icon svg { color: var(--navy); }
+    .contact-item-label {
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 2px;
+    }
+    .contact-item-val {
+      font-size: .95rem; font-weight: 500; color: var(--navy);
+      transition: color .2s;
+    }
+    .contact-item a:hover .contact-item-val { color: var(--gold-dk); }
+
+    /* Form */
+    .contact-form {
+      background: var(--warm-50);
+      border: 1px solid var(--warm-200);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+    }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--white);
+      border: 1.5px solid var(--warm-200);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      color: var(--charcoal);
+      transition: border-color .25s, box-shadow .25s;
+      outline: none;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,.12);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--warm-200); }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a07a2a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem; font-weight: 700;
+      letter-spacing: .09em; text-transform: uppercase;
+      padding: 15px;
+      border: none; border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background .25s, transform .2s var(--transition-base), box-shadow .25s;
+    }
+    .form-submit:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+    .form-submit:active { transform: translateY(0); }
+    .form-submit:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: linear-gradient(180deg, #191e32 0%, #141827 100%);
+      padding: 60px 5% 32px;
+      color: rgba(255,248,235,.55);
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 32px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-license {
+      font-size: .8rem;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--gold-lt);
+    }
+    .footer-nav {
+      display: flex; gap: 60px; flex-wrap: wrap;
+    }
+    .footer-nav-col h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .footer-nav-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-col a {
+      font-size: .88rem; color: rgba(255,255,255,.55);
+      transition: color .2s;
+    }
+    .footer-nav-col a:hover { color: var(--gold-lt); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy {
+      font-size: .8rem;
+    }
+    .footer-gold-line {
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin-bottom: 32px;
+      opacity: .3;
+    }
+
+    /* ─── TIPS SECTION ─── */
+    .tips { background: var(--cream); }
+    .tips-inner { max-width: 1120px; margin: 0 auto; }
+    .tips-header { text-align: center; margin-bottom: 56px; }
+    .tips-header .section-tag { justify-content: center; }
+    .tips-header .section-tag::before { display: none; }
+    .tips-header .section-title { margin-top: 10px; }
+
+    .tips-quiz {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-bottom: 48px;
+    }
+    .tip-card {
+      background: var(--white);
+      border: 1.5px solid var(--warm-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .3s, transform .3s var(--transition-base), box-shadow .3s;
+    }
+    .tip-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .tip-card.revealed { border-color: var(--gold); }
+    .tip-card-question {
+      padding: 28px 28px 0;
+    }
+    .tip-card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 600;
+      color: var(--warm-200);
+      line-height: 1; margin-bottom: 12px;
+    }
+    .tip-card-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem; font-weight: 500;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 20px;
+    }
+    .tip-card-reveal-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .09em; text-transform: uppercase;
+      color: var(--gold-dk);
+      background: none; border: none; cursor: pointer;
+      padding: 0 0 24px;
+      transition: gap .2s, color .2s;
+    }
+    .tip-card-reveal-btn:hover { gap: 10px; color: var(--navy); }
+    .tip-card-reveal-btn svg { width: 14px; height: 14px; transition: transform .3s var(--transition-base); }
+    .tip-card.revealed .tip-card-reveal-btn svg { transform: rotate(180deg); }
+    .tip-card-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height .45s var(--transition-base), opacity .35s;
+      opacity: 0;
+    }
+    .tip-card.revealed .tip-card-answer {
+      max-height: 300px;
+      opacity: 1;
+    }
+    .tip-card-answer-inner {
+      border-top: 1px solid var(--warm-100);
+      background: var(--warm-50);
+      padding: 20px 28px 24px;
+    }
+    .tip-card-answer-inner p {
+      font-size: .93rem; color: var(--text-body);
+      line-height: 1.7; font-weight: 300;
+    }
+    .tip-card-answer-inner strong { color: var(--navy); font-weight: 600; }
+
+    /* Bottom tip banner */
+    .tips-banner {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 36px 44px;
+      display: flex; align-items: center; gap: 32px;
+      flex-wrap: wrap;
+    }
+    .tips-banner-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: rgba(201,168,76,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tips-banner-icon svg { width: 26px; height: 26px; color: var(--gold); }
+    .tips-banner-text { flex: 1; min-width: 220px; }
+    .tips-banner-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .tips-banner-text p {
+      font-size: .88rem; color: rgba(255,255,255,.6);
+      font-weight: 300; line-height: 1.6;
+    }
+    .tips-banner-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .8rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      border: none; cursor: pointer;
+      white-space: nowrap;
+      transition: background .25s, transform .2s var(--transition-base), box-shadow .25s;
+      display: inline-block;
+    }
+    .tips-banner-cta:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    @media (max-width: 900px) {
+      .tips-quiz { grid-template-columns: repeat(2, 1fr); }
+      .tips-banner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+    @media (max-width: 640px) {
+      .tips-quiz { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FADE-IN ANIMATION ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--transition-base), transform .7s var(--transition-base);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up-d1 { transition-delay: .1s; }
+    .fade-up-d2 { transition-delay: .2s; }
+    .fade-up-d3 { transition-delay: .3s; }
+    .fade-up-d4 { transition-delay: .45s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 60px; }
+      .about-photo-wrap { max-width: 400px; }
+      .about-badge { right: -8px; bottom: -8px; }
+
+      .listings-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-top { flex-direction: column; }
+      .footer-nav { gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 72px 6%; }
+      .hero { padding: 100px 6% 72px; }
+      .listings-grid { grid-template-columns: 1fr; }
+      .about-stats { flex-direction: column; gap: 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: unset; }
+      .hero h1 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">
+    Amanda <span>Pham</span>&hairsp; Real Estate
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#listings">Listings</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#tips">Buyer Tips</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#listings" class="mobile-link">Listings</a>
+  <a href="#testimonials" class="mobile-link">Testimonials</a>
+  <a href="#tips" class="mobile-link">Buyer Tips</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="home">
+
+  <!-- layered atmospheric background -->
+  <div class="hero-bg"></div>
+
+  <!-- Floating geometric shapes -->
+  <div class="hero-shapes">
+
+    <!-- Shape 1: large, upper-left, gold tint, 12° -->
+    <div class="hs-wrap" style="left:-5%;top:20%;--rot:12deg;">
+      <div class="hs hs-1" style="width:600px;height:140px;background:linear-gradient(to right,rgba(201,168,76,.14),transparent);"></div>
+    </div>
+
+    <!-- Shape 2: large, lower-right, warm amber, -15° -->
+    <div class="hs-wrap" style="right:-2%;top:68%;--rot:-15deg;">
+      <div class="hs hs-2" style="width:500px;height:120px;background:linear-gradient(to right,rgba(210,155,50,.12),transparent);"></div>
+    </div>
+
+    <!-- Shape 3: medium, lower-left, deep gold, -8° -->
+    <div class="hs-wrap" style="left:8%;bottom:8%;--rot:-8deg;">
+      <div class="hs hs-3" style="width:300px;height:80px;background:linear-gradient(to right,rgba(160,122,42,.13),transparent);"></div>
+    </div>
+
+    <!-- Shape 4: small, upper-right, pale amber, 20° -->
+    <div class="hs-wrap" style="right:18%;top:12%;--rot:20deg;">
+      <div class="hs hs-4" style="width:200px;height:60px;background:linear-gradient(to right,rgba(226,185,90,.12),transparent);"></div>
+    </div>
+
+    <!-- Shape 5: tiny, upper-center-left, soft gold, -25° -->
+    <div class="hs-wrap" style="left:22%;top:6%;--rot:-25deg;">
+      <div class="hs hs-5" style="width:150px;height:40px;background:linear-gradient(to right,rgba(240,200,100,.09),transparent);"></div>
+    </div>
+
+  </div>
+
+  <!-- Houston skyline silhouette -->
+  <div class="hero-skyline">
+    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <path fill="#070d1a" d="
+        M0,320 L0,240
+        L30,240 L30,210 L38,210 L38,195 L46,195 L46,210 L54,210 L54,180 L60,180 L60,160 L66,160 L66,145 L72,145 L72,160 L78,160 L78,180 L90,180 L90,200 L100,200 L100,170 L108,170 L108,140 L116,140 L116,120 L124,120 L124,100 L130,100 L130,90 L136,90 L136,100 L142,100 L142,120 L148,120 L148,140 L156,140 L156,165 L164,165 L164,185 L172,185 L172,165 L178,165 L178,145 L188,145 L188,125 L196,125 L196,105 L202,105 L202,95 L210,95 L210,80 L216,80 L216,70 L224,70 L224,60 L230,60 L230,55 L236,55 L236,60 L242,60 L242,70 L250,70 L250,80 L256,80 L256,95 L264,95 L264,110 L270,110 L270,130 L278,130 L278,150 L286,150 L286,170 L292,170 L292,185 L300,185
+        L300,160 L308,160 L308,135 L316,135 L316,115 L322,115 L322,100 L328,100 L328,85 L336,85 L336,68 L344,68 L344,52 L350,52 L350,44 L356,44 L356,38 L362,38 L362,44 L368,44 L368,52 L376,52 L376,68 L382,68 L382,82 L390,82 L390,100 L396,100 L396,118 L404,118 L404,136 L412,136 L412,155 L420,155 L420,175 L428,175
+        L428,150 L436,150 L436,128 L444,128 L444,108 L452,108 L452,92 L460,92 L460,72 L468,72 L468,56 L476,56 L476,42 L484,42 L484,32 L490,32 L490,24 L496,24 L496,18 L504,18 L504,14 L510,14 L510,10 L516,10 L516,14 L522,14 L522,18 L530,18 L530,24 L536,24 L536,32 L542,32 L542,42 L550,42 L550,56 L558,56 L558,72 L566,72 L566,92 L574,92 L574,112 L580,112 L580,132 L588,132 L588,152 L596,152
+        L596,130 L604,130 L604,108 L612,108 L612,90 L620,90 L620,72 L628,72 L628,55 L636,55 L636,40 L644,40 L644,28 L652,28 L652,18 L660,18 L660,10 L668,10 L668,5 L676,5 L676,10 L684,10 L684,18 L692,18 L692,28 L700,28 L700,42 L708,42 L708,58 L716,58 L716,76 L722,76 L722,95 L730,95 L730,115 L738,115 L738,138 L744,138
+        L744,115 L752,115 L752,95 L760,95 L760,78 L768,78 L768,62 L776,62 L776,48 L784,48 L784,35 L792,35 L792,24 L800,24 L800,15 L808,15 L808,8 L816,8 L816,4 L822,4 L822,8 L830,8 L830,15 L838,15 L838,25 L846,25 L846,38 L854,38 L854,52 L862,52 L862,68 L868,68 L868,85 L876,85 L876,105 L882,105 L882,125 L890,125 L890,148 L898,148
+        L898,125 L906,125 L906,105 L914,105 L914,88 L922,88 L922,72 L928,72 L928,58 L936,58 L936,46 L944,46 L944,36 L950,36 L950,28 L958,28 L958,22 L966,22 L966,28 L972,28 L972,36 L980,36 L980,48 L988,48 L988,62 L996,62 L996,78 L1004,78 L1004,96 L1010,96 L1010,115 L1018,115 L1018,136 L1026,136 L1026,158 L1034,158
+        L1034,136 L1042,136 L1042,116 L1048,116 L1048,98 L1056,98 L1056,82 L1064,82 L1064,68 L1072,68 L1072,56 L1078,56 L1078,46 L1086,46 L1086,60 L1094,60 L1094,80 L1100,80 L1100,100 L1108,100 L1108,118 L1116,118 L1116,138 L1122,138 L1122,158 L1130,158 L1130,178 L1138,178
+        L1138,155 L1146,155 L1146,135 L1152,135 L1152,118 L1160,118 L1160,100 L1168,100 L1168,85 L1176,85 L1176,72 L1184,72 L1184,62 L1190,62 L1190,72 L1198,72 L1198,85 L1206,85 L1206,100 L1212,100 L1212,118 L1220,118 L1220,136 L1228,136 L1228,155 L1236,155 L1236,175 L1244,175 L1244,195 L1250,195
+        L1250,175 L1258,175 L1258,158 L1266,158 L1266,142 L1272,142 L1272,128 L1280,128 L1280,142 L1288,142 L1288,160 L1296,160 L1296,178 L1304,178 L1304,196 L1312,196 L1312,212 L1320,212 L1320,228 L1328,228 L1328,240 L1360,240 L1360,230 L1380,230 L1380,240 L1440,240 L1440,320 Z
+      "/>
+    </svg>
+  </div>
+
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <p class="hero-welcome">Houston, Texas</p>
+    <div class="hero-monogram">AP</div>
+    <p class="hero-tagline">Real Estate Made Simple &nbsp;·&nbsp; Dreams Made Real</p>
+    <div class="hero-actions">
+      <a href="#listings" class="hero-btn">Looking to Buy</a>
+      <a href="#contact" class="hero-btn">Looking to Sell</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </div>
+
+  <div class="hero-decor"></div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo-wrap fade-up">
+      <div class="about-photo">
+        <img src="Project_references/Headshot.JPEG" alt="Amanda Pham, Houston Realtor" />
+      </div>
+      <div class="about-badge">
+        Texas<br>Licensed
+        <small>Residential Real Estate</small>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag fade-up">About Amanda</span>
+      <h2 class="section-title fade-up fade-up-d1">A Realtor Who <em>Knows</em><br>Houston Inside Out</h2>
+      <p class="fade-up fade-up-d2">
+        Amanda Pham is a Houston-based residential real estate agent with a passion for helping people navigate one of life's biggest decisions. Licensed in Texas and rooted in the Houston community, she brings energy, dedication, and a personal touch to every transaction.
+      </p>
+      <p class="fade-up fade-up-d2">
+        Whether you're buying your very first home or selling to start your next chapter, Amanda is committed to making the process clear, stress-free, and rewarding. She takes the time to truly understand what her clients need — and works tirelessly to deliver it.
+      </p>
+      <p class="fade-up fade-up-d3">
+        Her philosophy is simple: real estate made simple, dreams made real. Amanda listens before she speaks, educates before she sells, and advocates fiercely for her clients at every step.
+      </p>
+      <div class="about-stats fade-up fade-up-d3">
+        <div class="stat">
+          <div class="stat-num">2<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5<span>★</span></div>
+          <div class="stat-label">Client Rated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">TX</div>
+          <div class="stat-label">Licensed Realtor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ LISTINGS ═══════════════ -->
+<section class="listings" id="listings">
+  <div class="listings-header">
+    <div class="listings-header-left">
+      <span class="section-tag fade-up">Active Properties</span>
+      <h2 class="section-title fade-up fade-up-d1">Current Listings<br><em>in Houston</em></h2>
+    </div>
+    <a href="#contact" class="listings-link fade-up">
+      All Listings
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="listings-grid">
+    <!-- Card 1 -->
+    <div class="card fade-up">
+      <div class="card-img">
+        <span class="card-status">Active</span>
+        <img src="https://placehold.co/600x450/c9a84c/1a2540?text=4210+Hazard+St" alt="4210 Hazard Street property" />
+        <div class="card-img-overlay">
+          <button class="card-view-btn">View Details</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">$649,000</div>
+        <div class="card-addr">4210 Hazard St · Montrose, Houston TX</div>
+        <div class="card-badges">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            4 bd
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 6a2 2 0 012-2h12a2 2 0 012 2v14H4V6z"/></svg>
+            3 ba
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            2,340 sqft
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card fade-up fade-up-d1">
+      <div class="card-img">
+        <span class="card-status">New</span>
+        <img src="https://placehold.co/600x450/253058/e2c97e?text=712+Cortlandt+St" alt="712 Cortlandt Street property" />
+        <div class="card-img-overlay">
+          <button class="card-view-btn">View Details</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">$489,500</div>
+        <div class="card-addr">712 Cortlandt St · The Heights, Houston TX</div>
+        <div class="card-badges">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            3 bd
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 6a2 2 0 012-2h12a2 2 0 012 2v14H4V6z"/></svg>
+            2 ba
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            1,820 sqft
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card fade-up fade-up-d2">
+      <div class="card-img">
+        <span class="card-status">Active</span>
+        <img src="https://placehold.co/600x450/2e2e2e/c9a84c?text=9021+Braeswood+Pl" alt="9021 Braeswood Place property" />
+        <div class="card-img-overlay">
+          <button class="card-view-btn">View Details</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">$875,000</div>
+        <div class="card-addr">9021 Braeswood Pl · Meyerland, Houston TX</div>
+        <div class="card-badges">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            5 bd
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 6a2 2 0 012-2h12a2 2 0 012 2v14H4V6z"/></svg>
+            4 ba
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            3,610 sqft
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header">
+      <span class="section-tag fade-up">Client Stories</span>
+      <h2 class="section-title fade-up fade-up-d1">What Clients <em>Say</em></h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="tcard fade-up">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote-mark">"</div>
+        <p class="tcard-quote">Amanda made buying our first home feel completely manageable. She walked us through every step, answered every question — even the ones we didn't know to ask. We closed in under 30 days and couldn't be happier.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">S</div>
+          <div>
+            <div class="tcard-name">Sarah M.</div>
+            <div class="tcard-loc">The Heights, Houston</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard fade-up fade-up-d1">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote-mark">"</div>
+        <p class="tcard-quote">We had to sell quickly due to a job relocation. Amanda priced our home perfectly, had it under contract in 6 days, and handled everything remotely. Her market knowledge is genuinely impressive — and she's a pleasure to work with.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">D</div>
+          <div>
+            <div class="tcard-name">David &amp; Lisa T.</div>
+            <div class="tcard-loc">Meyerland, Houston</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard fade-up fade-up-d2">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote-mark">"</div>
+        <p class="tcard-quote">I've worked with other agents in Houston — none compared. Amanda is responsive, honest, and genuinely invested in getting you the right home at the right price. She's the only person I'll call for my next investment property.</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">J</div>
+          <div>
+            <div class="tcard-name">James K.</div>
+            <div class="tcard-loc">Montrose, Houston</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TIPS ═══════════════ -->
+<section class="tips" id="tips">
+  <div class="tips-inner">
+    <div class="tips-header">
+      <span class="section-tag fade-up">Home Buyer Tips</span>
+      <h2 class="section-title fade-up fade-up-d1">Did You <em>Know?</em></h2>
+      <p style="color:var(--text-muted);font-size:.95rem;margin-top:14px;font-weight:300;" class="fade-up fade-up-d2">Tap each card to reveal the answer.</p>
+    </div>
+
+    <div class="tips-quiz">
+
+      <div class="tip-card fade-up" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">01</div>
+          <p class="tip-card-q">How much should you really have saved before buying a home?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p>Most buyers focus only on the down payment, but you also need <strong>2–5% of the purchase price for closing costs</strong>, plus 3–6 months of mortgage payments in reserves. A common goal: save at least <strong>10–15% of your target home price</strong> before starting your search.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-up fade-up-d1" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">02</div>
+          <p class="tip-card-q">What's the difference between pre-qualification and pre-approval?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p><strong>Pre-qualification</strong> is a quick estimate based on self-reported info — it holds little weight with sellers. <strong>Pre-approval</strong> is a verified lender review of your income, credit, and assets. In a competitive Houston market, <strong>always come with a pre-approval letter</strong> before making offers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-up fade-up-d2" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">03</div>
+          <p class="tip-card-q">Does a higher offer always win in a multiple-offer situation?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p>Not always! Sellers also weigh <strong>closing timeline, contingencies, and financing type</strong>. An all-cash offer or fewer contingencies can beat a higher bid. Your agent's ability to communicate your offer's strengths to the listing agent <strong>can make all the difference</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-up" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">04</div>
+          <p class="tip-card-q">Should you skip the home inspection to make your offer more attractive?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p><strong>Almost never.</strong> A home inspection typically costs $300–$500 and can uncover issues worth tens of thousands. Instead, consider an <strong>information-only inspection</strong> — you waive the right to negotiate repairs but still know what you're buying. Never skip it entirely.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-up fade-up-d1" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">05</div>
+          <p class="tip-card-q">What hidden costs do first-time buyers often forget about?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p>Beyond the mortgage: <strong>property taxes, HOA fees, homeowner's insurance, PMI</strong> (if down payment &lt; 20%), utilities, and ongoing maintenance (budget ~1% of home value/year). In Houston, flood insurance is also worth considering depending on the zone.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card fade-up fade-up-d2" onclick="toggleTip(this)">
+        <div class="tip-card-question">
+          <div class="tip-card-num">06</div>
+          <p class="tip-card-q">How long does buying a home in Houston typically take?</p>
+          <button class="tip-card-reveal-btn">
+            Reveal Answer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="tip-card-answer">
+          <div class="tip-card-answer-inner">
+            <p>From starting your search to closing, expect <strong>2–4 months on average</strong>. Getting pre-approved takes a few days, finding the right home varies, and once under contract the closing process is typically <strong>30–45 days</strong>. Starting early — even just exploring — puts you ahead.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tips-banner fade-up">
+      <div class="tips-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+        </svg>
+      </div>
+      <div class="tips-banner-text">
+        <h4>Have more questions about buying in Houston?</h4>
+        <p>Amanda is happy to walk you through every step — no pressure, just honest answers.</p>
+      </div>
+      <a href="#contact" class="tips-banner-cta">Ask Amanda</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <span class="section-tag fade-up">Get in Touch</span>
+      <h2 class="section-title fade-up fade-up-d1">Let's Start a<br><em>Conversation</em></h2>
+      <p class="contact-tagline fade-up fade-up-d2">No pressure. Just honest conversations<br>about Houston real estate.</p>
+
+      <div class="contact-list">
+        <a href="tel:+12814671196" class="contact-item fade-up">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.99 2.34 2 2 0 012.98.16h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7 2 2 0 011.72 2.03z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val">(281) 467-1196</div>
+          </div>
+        </a>
+
+        <a href="mailto:amandapham@theunaparalledteam.com" class="contact-item fade-up fade-up-d1">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val">amandapham@theunaparalledteam.com</div>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/apham.realtor/?hl=en" target="_blank" rel="noopener" class="contact-item fade-up fade-up-d2">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Instagram</div>
+            <div class="contact-item-val">@apham.realtor</div>
+          </div>
+        </a>
+
+        <a href="https://www.tiktok.com/@ap.realtor" target="_blank" rel="noopener" class="contact-item fade-up fade-up-d3">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">TikTok</div>
+            <div class="contact-item-val">@ap.realtor</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="(713) 555-0100" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="intent">What are you looking for?</label>
+            <select class="form-select" id="intent" name="intent">
+              <option value="" disabled selected>Select one…</option>
+              <option value="buy">Buy a Home</option>
+              <option value="sell">Sell My Home</option>
+              <option value="both">Buy &amp; Sell</option>
+              <option value="explore">Just Exploring</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell me a little about what you're looking for…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-gold-line"></div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Amanda <span>Pham</span> Real Estate</div>
+        <div class="footer-license">Licensed Realtor · Houston, TX</div>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-nav-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About Amanda</a></li>
+            <li><a href="#listings">Current Listings</a></li>
+            <li><a href="#testimonials">Client Stories</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:+12814671196">(281) 467-1196</a></li>
+            <li><a href="https://www.instagram.com/apham.realtor/?hl=en" target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@ap.realtor" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Amanda Pham Real Estate. All rights reserved.</p>
+      <p class="footer-copy" style="font-size:.75rem; opacity:.6;">Houston, TX · TREC #000000</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── NAV SCROLL STATE ───
+  const navbar = document.getElementById('navbar');
+  const heroHeight = document.getElementById('home').offsetHeight;
+  function updateNav() {
+    const scrolled = window.scrollY > heroHeight * 0.85;
+    navbar.classList.toggle('scrolled', scrolled);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ─── HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // ─── FADE-IN ON SCROLL ───
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ─── HERO immediate visibility ───
+  document.querySelector('.hero-inner').style.opacity = '1';
+  document.querySelector('.hero-inner').style.transform = 'none';
+
+  // ─── TIPS TOGGLE ───
+  function toggleTip(card) {
+    card.classList.toggle('revealed');
+  }
+
+  // ─── FORM SUBMIT ───
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#2e6b4f';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+</body>
+</html>
