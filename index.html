@@ -1346,15 +1346,15 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label" for="name">Full Name</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required />
+            <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" required />
+            <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" autocomplete="email" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="phone">Phone Number</label>
-            <input class="form-input" type="tel" id="phone" name="phone" placeholder="(713) 555-0100" />
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="(713) 555-0100" autocomplete="tel" />
           </div>
           <div class="form-group">
             <label class="form-label" for="intent">What are you looking for?</label>
@@ -1518,32 +1518,19 @@
       const startIdx = text.indexOf('{');
       const endIdx = text.lastIndexOf('}');
       const json = JSON.parse(text.slice(startIdx, endIdx + 1));
-      const allRows = (json.table.rows || [])
-        .map(r => r.c.map(cell => (cell ? cell.v : null)));
-      console.log('All rows from sheet:', allRows);
-      const activeRows = allRows
+      const activeRows = (json.table.rows || [])
+        .map(r => r.c.map(cell => (cell ? cell.v : null)))
         .filter(r => r[0] === true || r[0] === 'TRUE' || r[0] === 1);
-      console.log('Active rows:', activeRows);
       if (activeRows.length === 0) {
         container.innerHTML = EMPTY_STATE;
         if (headerLink) headerLink.childNodes[0].textContent = 'Get Notified ';
       } else {
-        const cardsHTML = activeRows.map((r, i) => {
-          try {
-            const html = buildCard(r, i > 0 ? i : 0);
-            console.log('Card HTML generated:', html.substring(0, 100));
-            return html;
-          } catch(err) {
-            console.error('buildCard error:', err, r);
-            return '';
-          }
-        }).join('');
+        const cardsHTML = activeRows.map((r, i) => buildCard(r, i)).join('');
         container.innerHTML = `<div class="listings-grid">${cardsHTML}</div>`;
         container.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
         if (headerLink) headerLink.childNodes[0].textContent = 'All Listings ';
       }
     } catch (e) {
-      console.error('loadListings error:', e);
       container.innerHTML = EMPTY_STATE;
     }
   }
